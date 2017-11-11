@@ -18,13 +18,17 @@ npm install --save vue-sensor
 import Vue from 'vue'
 import VueSensor from 'vue-sensor'
 
-Vue.use(VueSensor, {
+Vue.use(VueSensor, {,
   trackHandle: (e) => {
     // implementation
     
     console.log(e)
   }
 })
+```
+
+```html
+<button v-sensor:click="{value: 'hello'}">Click me</button>
 ```
 
 ### Browser
