@@ -1,6 +1,6 @@
 {
   "name": "vue-sensor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Vue.js Plugin",
   "author": "Antério vieira <anteriovieira@gmail.com>",
   "main": "dist/vue-sensor.common.js",
