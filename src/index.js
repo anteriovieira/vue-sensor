@@ -4,26 +4,30 @@ import BaseExtension from './extensions/BaseExtension'
 
 import Sendinblue from './extensions/Sendinblue.js'
 
-function plugin (Vue, options = {}) {
-  let extensions
+const customExtensions = []
+const nativeExtensions = ['sendinblue']
 
-  options.extensions.forEach(extension => {
+function plugin (Vue, options = {}) {
+  const extensions = []
+
+  Object.keys(options.extensions).forEach(extension => {
     let ext
-    if (typeof extension === 'string') {
+    if (nativeExtensions.includes(extension)) {
       switch (extension) {
         case 'sendinblue':
           ext = new Sendinblue()
           ext.init(options.extensions[extension])
           extensions.push(ext)
           break
-        default:
-          throw new Error(
-            `[vue-sensor] The ${extension} extension was not yet implemented.`
-          )
       }
+    } else if (customExtensions.includes(extension)) {
+      ext = customExtensions[extension]
+      ext.init(options.extensions[extension])
+      extensions.push(ext)
     } else {
-      extension.init(options.extensions[extension])
-      extensions.push(extension)
+      throw new Error(
+        `[vue-sensor] The ${extension} extension was not yet implemented.`
+      )
     }
   })
 
@@ -43,6 +47,10 @@ function plugin (Vue, options = {}) {
   }
 }
 
+function use (extension) {
+  customExtensions.push(extension)
+}
+
 // Install by default if using the script tag
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(plugin)
@@ -54,5 +62,6 @@ const version = '__VERSION__'
 export {
   Sensor,
   BaseExtension,
-  version
+  version,
+  use
 }
