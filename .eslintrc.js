@@ -1,6 +1,9 @@
 module.exports = {
   root: true,
   parser: 'babel-eslint',
+  env: {
+    "jest": true
+  },
   parserOptions: {
     sourceType: 'module'
   },
@@ -10,7 +13,9 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 0,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    // allow camelcase
+    "camelcase": 0
   },
   globals: {
     requestAnimationFrame: true,
