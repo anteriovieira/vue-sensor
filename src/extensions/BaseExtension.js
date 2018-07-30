@@ -1,19 +1,19 @@
 export default class BaseExtension {
 
-  constructor(name, config = {}) {
+  constructor (name, config = {}) {
     this.name = name
     this.config = config
   }
 
-  install(fn) {
-    const source = `;(${fn.toString()})(window)`;
-    const script = document.createElement('script');
+  install (fn) {
+    const source = `;(${fn.toString()})(window)`
+    const script = document.createElement('script')
 
-    script.type = 'text/javascript';
-    script.textContent = source;
-    script.async = true;
-    document.documentElement.appendChild(script);
-    script.parentNode.removeChild(script);
+    script.type = 'text/javascript'
+    script.textContent = source
+    script.async = true
+    document.documentElement.appendChild(script)
+    script.parentNode.removeChild(script)
   }
 
   trackView () { }

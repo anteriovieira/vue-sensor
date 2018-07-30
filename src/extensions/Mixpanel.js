@@ -17,7 +17,7 @@ export default class Mixpanel extends BaseExtension {
   }
 
   trackView ({ viewName }) {
-    mixpanel.track("Page Viewed", { "page": viewName })
+    mixpanel.track('Page Viewed', { 'page': viewName })
   }
 
   trackEvent ({ action, properties = {}, callback = null }) {
