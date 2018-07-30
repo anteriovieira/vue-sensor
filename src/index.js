@@ -2,7 +2,7 @@ import Sensor from './Sensor.js'
 import DSensor from './directives/sensor.js'
 import BaseExtension from './extensions/BaseExtension'
 
-import Mixpanel from './extensions/Mixpanel.js'
+import Sendinblue from './extensions/Sendinblue.js'
 
 function plugin (Vue, options = {}) {
   let extensions
@@ -11,8 +11,8 @@ function plugin (Vue, options = {}) {
     let ext
     if (typeof extension === 'string') {
       switch (extension) {
-        case 'mixpanel':
-          ext = new Mixpanel()
+        case 'sendinblue':
+          ext = new Sendinblue()
           ext.init(options.extensions[extension])
           extensions.push(ext)
           break
